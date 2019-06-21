@@ -1,2 +1,8 @@
 # ConvexHull
 finding ConvexHull of points using a physics way of thinking, rubber band shrinking. 
+First of all, for all n points given on the x-y plane, we use median select method both on x and y axises to find a proximately median point and named it (0,0). Then we make a relatively large enough circle which is our rubber band at initial state. Then we assume that there are n sticks connected the (0,0) point to each of the n points. And there will be a cross point of each stick to the rubber band. Then we could calculate and store the distance between (0,0) to each point such as Pi, and to each cross point such as Ci, thus di and Di. Also we could calculate the slope of each stick, which could be used for a "direction version of sort". Then basically what we are going to do, is to check each stick, if we could shrink the rubber band from Di to di by checking the relationship to its neighbor two sticks. If a di is within the range of the arc and chord of two most neighboring sticks, it remains, else we would simply delete it. Finally if all the sticks shrink from Di to di or being deleted, we are done. The most advantages of this thought are the following three: 
+           1. Time complexity should be between O(n) to O(nlogn); 
+           2. If a point is on the edge of the convex hull, even it might not be the vertex, we will know it. It would   
+           possibly better to obtain more information rather than less, and we could always take O(1) to delete it during the    
+           above process if we don't want them. 
+           3. It is easy to understand and seems feasible at this point. 
